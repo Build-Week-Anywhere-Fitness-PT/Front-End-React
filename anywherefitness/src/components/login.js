@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
 const Login = props => {
@@ -16,7 +16,7 @@ const Login = props => {
     const handleSubmit = e =>{
       e.preventDefault();
       axiosWithAuth()
-      .post('API URL GOES HERE', loginz)
+      .post('api/login', loginz)
       .then(res =>{
         console.log('login data', res.data)
         localStorage.setItem('token', res.data.payload);setLoginz(loginz)
@@ -29,9 +29,9 @@ const Login = props => {
     return (
       
       <form onSubmit={handleSubmit}>
-        <LoginDiv>
+        
           <div>
-            <h1>Welcome to the Bubbles Login!</h1>
+            <h1>Anywhere Fitness Login!</h1>
       <input
         type="text"
         name="username"
@@ -48,7 +48,6 @@ const Login = props => {
         onChange={handleChange}
       />
       </div>
-      </LoginDiv>
       <button>Log in</button>
     </form>
     

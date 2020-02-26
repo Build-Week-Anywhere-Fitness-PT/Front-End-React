@@ -18,7 +18,7 @@ function App() {
     <div className="App">
      <h1>Anywhere Fitness</h1>
      <Switch>
-     <PrivateRoute exact path="/protected" component={FitnessPage} />
+     {/* <PrivateRoute exact path="/protected" component={FitnessPage} /> */}
           <Route exact path="/" component={Login} />
         </Switch>
     </div>

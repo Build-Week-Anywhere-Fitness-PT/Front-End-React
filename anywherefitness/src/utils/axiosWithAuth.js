@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 const axiosWithAuth= () =>{
     const token= localStorage.getItem('token');
 
@@ -7,7 +6,7 @@ const axiosWithAuth= () =>{
         headers: {
         Authorization: token,
         },
-        baseURL: 'http://localhost:5000/api'
+        baseURL: 'https://reqres.in/'
         })
 };
 export default axiosWithAuth;
