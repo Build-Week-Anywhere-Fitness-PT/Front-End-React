@@ -69,11 +69,11 @@ const Login = props => {
   
               setIsLoading(true);
   
-              if (res.data.user.roleId !== 2) {
+              if (res.data.user.roleId === 2) {
                 console.log("Student");
   
                 props.history.push("/student");
-              } else if (res.data.user.roleId !== 1) {
+              } else if (res.data.user.roleId === 1) {
                 props.history.push("/instructor");
               }
   

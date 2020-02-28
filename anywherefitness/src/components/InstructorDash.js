@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import {NavLink} from 'react-router-dom';
+import GetClasses from '../classes/GetClasses'
 import styled from 'styled-components';
 
 const Buttonz = styled.button `
@@ -13,10 +14,7 @@ textDecoration: 'none',
 `
 
 function Instructordash(props) {
-const [category, setCategory] = useState({
-    id:'',
-    name:''
-})
+const [category, setCategory] = useState({})
 const [info, setInfo] =useState([]);
 
 // const [addClass, setAddClass] =useState(false)
@@ -24,7 +22,7 @@ const [info, setInfo] =useState([]);
 
     useEffect(()=>{
         axiosWithAuth()
-        .get('/api/category', category)
+        .post('/api/category', category)
         .then(res =>{console.log('data', res.data)
         localStorage.setItem('events', res.data);
         setCategory(category)
@@ -44,6 +42,7 @@ const [info, setInfo] =useState([]);
             <div className='user'> Welcome back {localStorage.getItem('instructorID')}</div>
             <section>
         <h1>My Classes</h1>
+        <GetClasses/>
             {info.map(classes =>
                 <div key ={category.id}>
                     

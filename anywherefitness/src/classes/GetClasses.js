@@ -48,43 +48,51 @@ const handleSubmit = (e) =>{
                 <h3> Add a Class</h3>
                 <input type='text'
                 name='title'
+                placeholder='Class'
                 value={classes.title}
                 onChange={handleChange}
                 />
 
                 <input type='text'
                 name='title'
+                placeholder='Instructor'
                 value={classes.instructorId}
                 onChange={handleChange}
                 />
 
                 <input type='text'
                 name='title'
+                placeholder='Category'
                 value={classes.categoryId}
                 onChange={handleChange}
                 />
                 <input type='text'
-                name='title'
+                name='time'
+                placeholder='Time'
                 value={classes.scheduleTime}
                 onChange={handleChange}
                 />
                 <input type='text'
-                name='title'
+                name='address'
+                placeholder='Address'
                 value={classes.address}
                 onChange={handleChange}
                 />
                 <input type='text'
-                name='title'
+                name='city'
+                placeholder='City'
                 value={classes.city}
                 onChange={handleChange}
                 />
                 <input type='text'
-                name='title'
+                name='city'
+                placeholder='State'
                 value={classes.state}
                 onChange={handleChange}
                 />
                 <input type='text'
-                name='title'
+                name='zip'
+                placeholder='ZipCode'
                 value={classes.zipCode}
                 onChange={handleChange}
                 />

@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
-import GetClasses from '../classes/GetClasses'
 import stlyed from 'styled-components';
 
 
@@ -10,7 +9,7 @@ const FitnessDashCli = props =>{
 
     useEffect(()=>{
         axiosWithAuth()
-        .get('/api/classes', classes)
+        .get('/api/category', classes)
         .then(res =>{
             console.log(res)
             setClasses(res.data)
@@ -18,11 +17,22 @@ const FitnessDashCli = props =>{
         .catch(err =>{
             console.log(err)
         });
-    }, [{}]);
+    }, []);
 
     return(
        <div>
-          <GetClasses/>
+          <h1>Welcome back</h1>
+          <h2>{localStorage.getItem('username')}</h2>
+          <br/>
+          {classes.map(classes => 
+          <div key ={classes.id}>
+              <br/>
+              <h4>Title: <p>{classes.name}</p></h4>
+              <h5>Description: <p>{classes.description}</p></h5>
+              
+              
+          </div>)}
+
       </div>
     )
 }
