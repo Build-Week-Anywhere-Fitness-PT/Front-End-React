@@ -2,13 +2,26 @@ import React, {useState} from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import styled from 'styled-components';
 
-// const LoginBox = styled.div `
-// justify-content: center;
-// margin: 0 auto;
-// width: 18%;
-// border: 1px solid black;
-// border-radius:  3px;
-// `
+const LoginBox = styled.div `
+justify-content: center;
+background: #4D724D;
+color: #f5f5f5;
+margin: 0 auto;
+width: 40%;
+height: 90vh;
+border: 1px solid black;
+border-radius:  3px;
+`
+const StyleForm = styled.div`
+background: #8DB48E;
+margin: 0 auto;
+border-radius: 10%;
+padding: 20px;
+width: 60%;
+`
+// #F5F5F5
+// #8DB48E
+// #4D724D 
 
 const Login = props => {
     const [loginz, setLoginz] = useState({
@@ -93,13 +106,15 @@ const Login = props => {
   
     return (
       <>
-  
+      <LoginBox>
         <div>
-          <h1>Login</h1>
-  
+          <h1>Anywhere Fitness</h1>
+          <h5>Login</h5>
+          <img src="images/AF.png" alt='logo'/>
+          <br/>
           <form
             onSubmit={handleSubmit}>
-  
+              <StyleForm>
             <input
               type="text"
               name="username"
@@ -107,6 +122,8 @@ const Login = props => {
               value={loginz.username}
               onChange={handleChange}
             />
+            <br/>
+            <br/>
             <input
               type="password"
               name="password"
@@ -114,72 +131,28 @@ const Login = props => {
               value={loginz.password}
               onChange={handleChange}
             />
-  
+            </StyleForm>
+            <br/>
             <button type="submit">Sign In</button>
           </form>
         </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <footer>
+          <h6>Copy Right 2020 Anywhere Fitness</h6>
+        </footer>
+        </LoginBox>
+        
       </>
     );
   };
-    
-  
-  //   const handleChange = e =>{
-  //     setLoginz({...loginz, [e.target.name]:
-  //        e.target.value})
-  //   }
-  
-  //   const handleSubmit = e =>{
-  //     e.preventDefault();
-  //     axiosWithAuth()
-  //     .post('/api/auth/login', loginz)
-  //     .then(res =>{
-  //       console.log('login data', res.data)
-  //       localStorage.setItem('token', res.data.token);
-  //       setLoginz(loginz)
-  //       if (res.data.type === "instructor") {
-  //         props.history.push("/instructor");
-  //       } else {
-  //         props.history.push("/client");
-  //       }
-  //       props.history.push('/protected')
-  //   })
-  //   .catch(err=>{console.log('inavlid login', err);
-  //   });
-  //   };
-    
-  //   return (
-      
-      
-  //     <form onSubmit={handleSubmit}>
-        
-  //         <div>
-  //           <h1>Anywhere Fitness Login!</h1>
-  //           <LoginBox>
-  //             <br/>
-  //     <input
-  //       type="text"
-  //       name="username"
-  //       placeholder="username"
-  //       value={loginz.username}
-  //       onChange={handleChange}
-  //     />
-  //     <br/>
-  //     <br/>
-  //     <input
-  //       type="password"
-  //       name="password"
-  //       placeholder="password"
-  //       value={loginz.password}
-  //       onChange={handleChange}
-  //     />
-  //     <br/>
-  //     <br/>
-  //     </LoginBox>
-  //     </div>
-  //     <button>Log in</button>
-  //   </form>
-  //   );
-  // };
   
   export default Login;
   

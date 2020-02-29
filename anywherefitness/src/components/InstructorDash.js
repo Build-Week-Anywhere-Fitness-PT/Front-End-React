@@ -30,29 +30,22 @@ const [classes, setClasses] = useState([])
             console.log(err)
         });
     }, []);
-// const [addClass, setAddClass] =useState(false)
 
 
-    useEffect(()=>{
-        axiosWithAuth()
-        .post('/api/category', category)
-        .then(res =>{console.log('data', res.data)
-        localStorage.setItem('events', res.data);
-        setCategory(category)
-        setInfo(res.data.category)
-        })
-        .catch(err=>{
-            console.log('invalid', err)})
-    }, []);
 
-    const handleDelete = id =>{
-        axiosWithAuth()
-        .delete('/api/classes:Id')
-        .then( res =>{
-            console.log(res)
-            setEvents(events.filter(item => item.id !== id))
-        })
-    }
+    // useEffect(()=>{
+    //     axiosWithAuth()
+    //     .post('/api/category', category)
+    //     .then(res =>{console.log('data', res.data)
+    //     localStorage.setItem('events', res.data);
+    //     setCategory(category)
+    //     setInfo(res.data.category)
+    //     })
+    //     .catch(err=>{
+    //         console.log('invalid', err)})
+    // }, []);
+
+    
 
     return(
         
@@ -61,7 +54,7 @@ const [classes, setClasses] = useState([])
             <div className='user'> Welcome back {localStorage.getItem('instructorID')}</div>
           <h2>My classes: </h2>
           {classes.map(classes => 
-          <div key ={classes.id}>
+          <div key ={classes.id}> 
               <br/>
               <h4>Workout: <p>{classes.name}</p></h4>
               <h5>Description: <p>{classes.description}</p></h5>
@@ -69,7 +62,6 @@ const [classes, setClasses] = useState([])
               
           </div>)}
           <GetClasses/>
-          <button onClick ={() => handleDelete(events.id)}>Delete</button>
             
         </div>
     )
