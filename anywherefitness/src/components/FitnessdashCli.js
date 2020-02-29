@@ -6,32 +6,34 @@ import stlyed from 'styled-components';
 
 const FitnessDashCli = props =>{
     const [classes, setClasses] = useState([])
-
-    useEffect(()=>{
-        axiosWithAuth()
-        .get('/api/category', classes)
-        .then(res =>{
-            console.log(res)
-            setClasses(res.data)
-        })
-        .catch(err =>{
-            console.log(err)
-        });
-    }, []);
+// //implement a search functionality
+//     useEffect(()=>{
+//         axiosWithAuth()
+//         .get('/api/category', classes)
+//         .then(res =>{
+//             console.log(res)
+//             setClasses(res.data)
+//         })
+//         .catch(err =>{
+//             console.log(err)
+//         });
+//     }, []);
 
     return(
        <div>
           <h1>Welcome back</h1>
           <h2>{localStorage.getItem('username')}</h2>
-          <br/>
+
+          will add a seach functionality here
+          {/* <br/>
           {classes.map(classes => 
           <div key ={classes.id}>
               <br/>
-              <h4>Title: <p>{classes.name}</p></h4>
+              <h4>Workout: <p>{classes.name}</p></h4>
               <h5>Description: <p>{classes.description}</p></h5>
               
               
-          </div>)}
+          </div>)} */}
 
       </div>
     )

@@ -1,4 +1,4 @@
 import {createContext} from "react";
 
- const FitnessContext = createContext()
+const FitnessContext = createContext()
   export default FitnessContext;

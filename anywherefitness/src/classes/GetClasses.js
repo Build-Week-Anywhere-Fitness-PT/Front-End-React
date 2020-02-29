@@ -2,17 +2,14 @@ import React, {useState, useEffect, useContext} from 'react';
 import FitnessContext from '../context/FitnessContext'
 import axiosWithAuth from '../utils/axiosWithAuth';
 
+
+//THIS IS FOR THE INSTRUCTOR TO CREATE A NEW CLASS
 const GetClasses = () => {
-    const {events, setEvents} = useContext;
+    const {events, setEvents} = useContext(FitnessContext);
     const [classes, setClasses] = useState({
         title:'',
         instructorId:'',
         categoryId:'',
-        scheduleTime:'',
-        address:'',
-        city:'',
-        state:'',
-        zipCode:''
 
 })
 const handleChange = e =>{
@@ -20,27 +17,24 @@ const handleChange = e =>{
 }
 const handleSubmit = (e) =>{
     e.preventDefault();
-    console.log(events);
+    // console.log(classes)
     axiosWithAuth()
+    
     .post('/api/classes', classes)
     .then(res =>{
         setClasses ({
         title:'',
         instructorId:'',
         categoryId:'',
-        scheduleTime:'',
-        address:'',
-        city:'',
-        state:'',
-        zipCode:''
         })
         setEvents([...events, res.data])
     })
     .catch(err => {
         console.log(err)
     })
+    
 }
-
+//SET STATE TO RESPONSE
 
     return(
         <div className='classes'>
@@ -52,50 +46,23 @@ const handleSubmit = (e) =>{
                 value={classes.title}
                 onChange={handleChange}
                 />
-
+                <br/>
                 <input type='text'
-                name='title'
+                name='instructorId'
                 placeholder='Instructor'
                 value={classes.instructorId}
                 onChange={handleChange}
                 />
-
+                <br/>
                 <input type='text'
-                name='title'
+                name='categoryId'
                 placeholder='Category'
-                value={classes.categoryId}
+                value={classes.categoryid}
                 onChange={handleChange}
                 />
-                <input type='text'
-                name='time'
-                placeholder='Time'
-                value={classes.scheduleTime}
-                onChange={handleChange}
-                />
-                <input type='text'
-                name='address'
-                placeholder='Address'
-                value={classes.address}
-                onChange={handleChange}
-                />
-                <input type='text'
-                name='city'
-                placeholder='City'
-                value={classes.city}
-                onChange={handleChange}
-                />
-                <input type='text'
-                name='city'
-                placeholder='State'
-                value={classes.state}
-                onChange={handleChange}
-                />
-                <input type='text'
-                name='zip'
-                placeholder='ZipCode'
-                value={classes.zipCode}
-                onChange={handleChange}
-                />
+                <br/>
+                <br/>
+                
                 <button type='submit'>Add new class</button>
             </form>
 
