@@ -95,6 +95,12 @@ const handleDelete = id =>{
                 onChange={handleChange}
                 />
                 <br/>
+                <input type='text'
+                name='categoryId'
+                placeholder='Description'
+                value={classes.description}
+                onChange={handleChange}
+                />
                 <br/>
                 
                 <button type='submit'>Add new class</button>

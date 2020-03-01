@@ -3,10 +3,11 @@ import axiosWithAuth from '../utils/axiosWithAuth';
 import styled from 'styled-components';
 
 const LoginBox = styled.div `
+margin: 30px 40px 0px 380px;
 justify-content: center;
 background: #4D724D;
 color: #f5f5f5;
-margin: 0 auto;
+
 width: 40%;
 height: 90vh;
 border: 1px solid black;
