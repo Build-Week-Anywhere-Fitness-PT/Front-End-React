@@ -12,6 +12,15 @@ textDecoration: 'none',
         padding: '10px 25px',
         backgroundColor: '#AEEA4F'
 `
+const C = styled.div `
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+width: 20%;
+margin: 0 auto;
+padding: 10px;
+border: 3px solid black;
+`
 
 function Instructordash(props) {
     const {events, setEvents}= useContext(FitnessContext)
@@ -53,16 +62,18 @@ const [classes, setClasses] = useState([])
             <h1>Anywhere Fitness Instructor</h1>
             <div className='user'> Welcome back {localStorage.getItem('instructorID')}</div>
           <h2>My classes: </h2>
+          
           {classes.map(classes => 
+          
           <div key ={classes.id}> 
+          <C>
               <br/>
               <h4>Workout: <p>{classes.name}</p></h4>
               <h5>Description: <p>{classes.description}</p></h5>
-              
-              
+              </C>
           </div>)}
           <GetClasses/>
-            
+          
         </div>
     )
 }
