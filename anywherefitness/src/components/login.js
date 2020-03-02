@@ -49,8 +49,6 @@ const Login = props => {
         .post("/api/auth/login", loginz)
         .then(
           res => {
-            
-            
   
             if (res.data.user.roleId !== 2) {
               
@@ -99,10 +97,7 @@ const Login = props => {
               }, 1000);
             }
           }
-          // .catch(err => {
-          //     // setError(err.response.data.message)
-          //     console.log(err);
-          //   });
+          
         );
     };
   

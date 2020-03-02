@@ -20,11 +20,10 @@ function App() {
       <FitnessContext.Provider value={{events, setEvents}}>
     <div className="App">
      {/* <h1>Anywhere Fitness</h1> */}
-     <Switch>
+     <Route exact path="/" component={Login} />
      <PrivateRoute exact path="/protected" component={InstructorDash} />
      <PrivateRoute exact path='/student' component={FitnessdashCli}/>
-          <Route exact path="/" component={Login} />
-        </Switch>
+          
     </div>
     </FitnessContext.Provider>
     </Router>
