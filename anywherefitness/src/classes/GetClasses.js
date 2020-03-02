@@ -52,10 +52,11 @@ const handleSubmit = (e) =>{
 //Need to somehow fix my delete and create and Update class
 const handleDelete = id =>{
     axiosWithAuth()
-    .delete('/api/classes:id')
+    .delete(`/api/classes/${id}`)
     .then( res =>{
         console.log(res)
         setEvents(events.filter(item => item.id !== id))
+        setClasses(classes.filter(item => item.id !== id))
     })
 }
 //SET STATE TO RESPONSE
@@ -65,7 +66,7 @@ const handleDelete = id =>{
         <div className='classes'>
             <h2>Class I've created</h2>
                 {classes.map(classes => 
-          <div key ={classes.id}> <button onClick ={() => handleDelete(events.id)}>Delete</button>
+          <div key ={classes.id}> <button onClick ={() => handleDelete(classes.id)}>Delete</button>
               <br/>
               <h4>Workout: <p>{classes.title}</p></h4>
           <h4>Instructor Id: <p>{classes.instructorId}</p></h4>

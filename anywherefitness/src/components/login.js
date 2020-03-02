@@ -49,7 +49,8 @@ const Login = props => {
         .post("/api/auth/login", loginz)
         .then(
           res => {
-  
+
+            
             if (res.data.user.roleId !== 2) {
               
   
