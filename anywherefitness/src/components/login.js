@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import styled from 'styled-components';
+import AF from '../images/AF.png'
 
 const LoginBox = styled.div `
 margin: 30px 40px 0px 380px;
@@ -111,7 +112,7 @@ const Login = props => {
         <div>
           <h1>Anywhere Fitness</h1>
           <h5>Login</h5>
-          <img src="images/AF.png" alt='logo'/>
+          <img src={AF} alt='logo'/>
           <br/>
           <form
             onSubmit={handleSubmit}>

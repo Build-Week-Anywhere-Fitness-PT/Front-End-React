@@ -48,6 +48,8 @@ const handleSubmit = (e) =>{
     
 }
 
+
+//Need to somehow fix my delete and create and Update class
 const handleDelete = id =>{
     axiosWithAuth()
     .delete('/api/classes:id')

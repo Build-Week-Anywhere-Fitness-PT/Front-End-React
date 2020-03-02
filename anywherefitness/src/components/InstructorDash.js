@@ -40,20 +40,7 @@ const [classes, setClasses] = useState([])
         });
     }, []);
 
-
-
-    // useEffect(()=>{
-    //     axiosWithAuth()
-    //     .post('/api/category', category)
-    //     .then(res =>{console.log('data', res.data)
-    //     localStorage.setItem('events', res.data);
-    //     setCategory(category)
-    //     setInfo(res.data.category)
-    //     })
-    //     .catch(err=>{
-    //         console.log('invalid', err)})
-    // }, []);
-
+    
     
 
     return(
