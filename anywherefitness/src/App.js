@@ -24,6 +24,7 @@ function App() {
       <FitnessContext.Provider value={{events, setEvents}}>
     <div className="App">
      {/* <h1>Anywhere Fitness</h1> */}
+
      <Navigation /> 
 
         <Switch>
@@ -33,6 +34,7 @@ function App() {
             <Route path="/SignUp" component={SignUp}/>
         </Switch>
      {/* <Footer /> */}
+
     </div>
     </FitnessContext.Provider>
     </Router>
