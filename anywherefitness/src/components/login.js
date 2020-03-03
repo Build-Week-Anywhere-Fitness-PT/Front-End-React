@@ -19,7 +19,7 @@ background: #8DB48E;
 margin: 0 auto;
 border-radius: 10%;
 padding: 20px;
-width: 60%;
+width: 50%;
 `
 // #F5F5F5
 // #8DB48E

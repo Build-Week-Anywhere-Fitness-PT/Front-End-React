@@ -38,8 +38,7 @@ const FitnessDashCli = props =>{
 const handleSearch = (e) =>{
     console.log(e.target.value)
     setSearch(e.target.value)
-
-    setClasses(classes.filter(classes => classes.name.toLowerCase().includes(search.toLocaleLowerCase()) ))
+    setClasses(classes.filter(classes => classes.title.toLowerCase().includes(search.toLocaleLowerCase()) ))
 }
 
     return(
@@ -63,7 +62,6 @@ const handleSearch = (e) =>{
           <h4>Instructor Id: <p>{classes.instructorId}</p></h4>
           
           <h4>Category Id: <p>{classes.categoryId}</p></h4>
-              <h5>Description: <p>{classes.description}</p></h5>
               </Client>
               
           </div>)}

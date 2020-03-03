@@ -4,14 +4,6 @@ import FitnessContext from '../context/FitnessContext'
 import GetClasses from '../classes/GetClasses'
 import styled from 'styled-components';
 
-const Buttonz = styled.button `
-textDecoration: 'none',
-        color: 'black',
-        border: '2px solid #636363',
-        borderRadius: '5px',
-        padding: '10px 25px',
-        backgroundColor: '#AEEA4F'
-`
 const C = styled.div `
 display: flex;
 flex-direction: column;
@@ -23,9 +15,7 @@ border: 3px solid black;
 `
 
 function Instructordash(props) {
-    const {events, setEvents}= useContext(FitnessContext)
-const [category, setCategory] = useState({})
-const [info, setInfo] =useState([]);
+
 const [classes, setClasses] = useState([])
 //implement a search functionality
     useEffect(()=>{
