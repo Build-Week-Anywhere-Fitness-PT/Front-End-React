@@ -1,7 +1,20 @@
 import React, {useState, useEffect, useContext} from 'react';
 import FitnessContext from '../context/FitnessContext'
 import axiosWithAuth from '../utils/axiosWithAuth';
+import styled from 'styled-components';
 
+const Boxes = styled.div `
+display: flex;
+font-size: 15px;
+flex-direction: column;
+flex-wrap: wrap;
+justify-content: inherit;
+border: 5px solid black;
+width: 60%;
+height: 60vh;
+margin: auto;
+padding: 5px;
+`
 
 //THIS IS FOR THE INSTRUCTOR TO CREATE A NEW CLASS
 const GetClasses = () => {
@@ -20,7 +33,6 @@ const handleChange = e =>{
 useEffect(()=>{
     axiosWithAuth()
     .get('/api/classes', classes)
-    // headers: {'authorization'}
     .then(res =>{
         console.log(res)
         setClasses(res.data)
@@ -31,9 +43,6 @@ useEffect(()=>{
     });
 }, []);
 
-// const handleNumberChange = e =>{
-//     key=Number(e.target.value);
-// }
 const handleSubmit = (e) =>{
     e.preventDefault();
     axiosWithAuth()
@@ -54,7 +63,7 @@ const handleSubmit = (e) =>{
 }
 
 
-//Need to somehow fix my delete and create and Update class
+
 const handleDelete = id =>{
     axiosWithAuth()
     .delete(`/api/classes/${id}`)
@@ -68,17 +77,18 @@ const handleDelete = id =>{
 //SET STATE TO RESPONSE
 
     return(
-        
         <div className='classes'>
             <h2>Class I've created</h2>
+            <Boxes>
                 {classes.map(classForm=>
-          <div key ={classForm.id}> <button onClick ={() => handleDelete(classForm.id)}>Delete</button>
+          <div key ={classForm.id}>
               <br/>
               <h4>Workout: <p>{classForm.title}</p></h4>
           <h4>Instructor Id: <p>{classForm.instructorId}</p></h4>
           <h4>Category Id: <p>{classForm.categoryId}</p></h4>
-              
+          <button onClick ={() => handleDelete(classForm.id)}>Delete</button>
           </div>)}
+          </Boxes>
           <form onSubmit={handleSubmit}>
                 <h5> Add a Class</h5>
                 <input type='text'

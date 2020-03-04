@@ -6,14 +6,21 @@ import styled from 'styled-components';
 
 const C = styled.div `
 display: flex;
+
+font-size: 15px;
 flex-direction: column;
 flex-wrap: wrap;
-width: 20%;
-margin: 0 auto;
-padding: 10px;
-border: 3px solid black;
+justify-content: inherit;
+width: 70%;
+height: 60vh;
+margin: auto;
+padding: 5px;
+border: 5px solid black;
 `
+const Back = styled.div `
 
+
+`
 function Instructordash(props) {
 
 const [classes, setClasses] = useState([])
@@ -34,24 +41,28 @@ const [classes, setClasses] = useState([])
     
 
     return(
-        
+        <Back>
         <div>
             <h1>Anywhere Fitness Instructor</h1>
             <div className='user'> Welcome back {localStorage.getItem('instructorID')}</div>
-          <h2>My classes: </h2>
+            <h2>My classes: </h2>
+            <C>
+          
           
           {classes.map(classes => 
           
           <div key ={classes.id}> 
-          <C>
+          
               <br/>
               <h4>Workout: <p>{classes.name}</p></h4>
               <h5>Description: <p>{classes.description}</p></h5>
-              </C>
+              
           </div>)}
+          </C>
           <GetClasses/>
           
         </div>
+        </Back>
     )
 }
 export default Instructordash;

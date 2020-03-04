@@ -49,9 +49,9 @@ const Login = props => {
         .post("/api/auth/login", loginz)
         .then(
           res => {
-
+/// === 1 else ===2 instructor page 
             
-            if (res.data.user.roleId !== 2) {
+            if (res.data.user.roleId === 2) {
               
   
               //Set Token in Local Storage
@@ -67,7 +67,7 @@ const Login = props => {
   
               props.history.push("/student");
   
-            } else if (res.data.user.roleId !== 1) {
+            } else if (res.data.user.roleId === 1) {
               
               //Set Token in Local Storage
               localStorage.setItem("token", res.data.token);
