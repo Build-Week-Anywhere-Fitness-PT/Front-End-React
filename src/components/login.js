@@ -30,7 +30,6 @@ const Login = props => {
       username:'',
       password:''
     })
-    const [isLoading, setIsLoading] = useState(false);
     
     const handleChange = e => {
       setLoginz({
@@ -41,10 +40,6 @@ const Login = props => {
   
     const handleSubmit = e => {
       e.preventDefault();
-  
-      setIsLoading(true);
-  
-  
       axiosWithAuth()
         .post("/api/auth/login", loginz)
         .then(
@@ -62,9 +57,6 @@ const Login = props => {
   
               //Set InstructorID in Local Storage
               localStorage.setItem("studentID", res.data.user.id);
-  
-              
-  
               props.history.push("/student");
   
             } else if (res.data.user.roleId === 1) {
@@ -79,23 +71,19 @@ const Login = props => {
               localStorage.setItem("instructorID", res.data.user.id);
   
   
-              props.history.push("/instructor");
+              props.history.push("/protected");
   
-              setIsLoading(true);
+  
   
               if (res.data.user.roleId === 2) {
                 console.log("Student");
   
                 props.history.push("/student");
               } else if (res.data.user.roleId === 1) {
-                props.history.push("/instructor");
+                props.history.push("/protected");
               }
   
               localStorage.setItem("token", res.data.token);
-  
-              setTimeout(function() {
-                setIsLoading(false);
-              }, 1000);
             }
           }
           
