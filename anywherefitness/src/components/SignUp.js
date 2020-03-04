@@ -1,20 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik } from 'formik';
 import styled from 'styled-components';
+import InstructorSignup from './InstructorSignUp';
+import axios from 'axios';
+
 
 const FormWrapper = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
 `;
 
 
-const SignUp = () => (
+const SignUp = (props) => (
+
+
+
   <div>
     <h1>Sign up form</h1>
     <Formik
-      initialValues={{ username: 'username', password: 'password', firstName: 'first name', lastName: 'last name',email: 'email', roleId: 'role ID' }}
+      initialValues={{ username: 'username', password: 'password', firstName: 'firstname', lastName: 'lastname',email: 'email', roleId: `roleId` }}
       validate={values => {
         const errors = {};
         if (!values.email) {
@@ -29,10 +34,22 @@ const SignUp = () => (
         
       }}
       onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
+        axios.post("https://lambda-anywhere-fitness.herokuapp.com/api/auth/register", values)
+        .then(res => {
+          console.log(res);
+          props.history.push("/");
+          if(  res.data.roleId === 1  ){
+            alert("student account successfully registered")
+          }
+          else if ( res.data.roleId === 2){
+            alert("coach account successfully registered")
+          }
+        } )
+        .catch(error => {
+          console.log(error);
+        }
+        )
+      
         console.log(values);
       }}
     >
@@ -81,7 +98,7 @@ const SignUp = () => (
             onBlur={handleBlur}
             value={values.email}
           />
-         <input
+          <input
             type="roleId"
             name="roleId"
             onChange={handleChange}
@@ -100,7 +117,12 @@ const SignUp = () => (
         </FormWrapper>
       )}
     </Formik>
+    <br></br>
+    <br></br>
+    {/* <InstructorSignup /> */}
   </div>
 );
+
+
 
 export default SignUp;

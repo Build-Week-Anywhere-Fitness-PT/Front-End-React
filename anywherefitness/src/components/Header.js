@@ -24,9 +24,9 @@ export function Navigation() {
   }} exact to={'/'}>ANYWHERE FITNESS</h1>
                 </div>
                 <Links class="nav navbar-nav">
-                    <HeaderLink><NavLink exact to={'/'}>Home</NavLink></HeaderLink>
+                    {/* <HeaderLink><NavLink exact to={'/'}>Home</NavLink></HeaderLink> */}
                     <HeaderLink><NavLink to={'/SignUp'}>Sign-Up</NavLink></HeaderLink>
-                    <HeaderLink><NavLink to={'/login'}>Log In</NavLink></HeaderLink>
+                    <HeaderLink><NavLink to={'/'}>Log In</NavLink></HeaderLink>
                 </Links>
             </div>
         </Header>
