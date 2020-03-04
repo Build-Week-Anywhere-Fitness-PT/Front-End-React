@@ -11,9 +11,13 @@ import Search from './Search';
 flex-direction: column;
 flex-wrap: wrap;
 width: 20%;
-margin: 0 auto;
-padding: 10px;
+margin: auto;
 border: 3px solid black;
+ `
+ const Img = styled.div `
+ margin-right:1340px;
+ margin-bottom: -102px;
+
  `
 
 const FitnessDashCli = props =>{
@@ -36,20 +40,19 @@ const FitnessDashCli = props =>{
     }, []);
 
 const handleSearch = (e) =>{
+    e.preventDefault()
     console.log(e.target.value)
     setSearch(e.target.value)
-
-    setClasses(classes.filter(classes => classes.name.toLowerCase().includes(search.toLocaleLowerCase()) ))
+    setClasses(classes.filter(classes => classes.title.toLowerCase().includes(search.toLocaleLowerCase()) ))
 }
 
     return(
         <FitCli>
-       <div>
+       <div>  
           <h1>Welcome back</h1>
           <h2>{localStorage.getItem('username')}</h2>
           
           <br/>
-          Need to fix this search and figure out why I'm getting and error for toLowerCase
           <Search handleSearch={handleSearch} search = {search}/>
 
           
@@ -63,7 +66,6 @@ const handleSearch = (e) =>{
           <h4>Instructor Id: <p>{classes.instructorId}</p></h4>
           
           <h4>Category Id: <p>{classes.categoryId}</p></h4>
-              <h5>Description: <p>{classes.description}</p></h5>
               </Client>
               
           </div>)}

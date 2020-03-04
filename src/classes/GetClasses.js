@@ -1,20 +1,38 @@
 import React, {useState, useEffect, useContext} from 'react';
 import FitnessContext from '../context/FitnessContext'
 import axiosWithAuth from '../utils/axiosWithAuth';
+import styled from 'styled-components';
 
+const Boxes = styled.div `
+display: flex;
+font-size: 15px;
+flex-direction: column;
+flex-wrap: wrap;
+justify-content: inherit;
+border: 5px solid black;
+width: 60%;
+height: 60vh;
+margin: auto;
+padding: 5px;
+`
 
 //THIS IS FOR THE INSTRUCTOR TO CREATE A NEW CLASS
 const GetClasses = () => {
     const {events, setEvents} = useContext(FitnessContext);
     const [classes, setClasses] = useState([])
+    const [classForm, setClassForm] =useState({
+    title:'',
+    instructorId:'',
+    categoryId:''
+})
 const handleChange = e =>{
-    setClasses({...classes, [e.target.name]: e.target.value})
+    setClassForm({...classForm, [e.target.name]: e.target.value})
+    
 }
 
 useEffect(()=>{
     axiosWithAuth()
     .get('/api/classes', classes)
-    // headers: {'authorization'}
     .then(res =>{
         console.log(res)
         setClasses(res.data)
@@ -25,22 +43,18 @@ useEffect(()=>{
     });
 }, []);
 
-// const handleNumberChange = e =>{
-//     key=Number(e.target.value);
-// }
 const handleSubmit = (e) =>{
     e.preventDefault();
-    // console.log(classes)
     axiosWithAuth()
-    
-    .post('/api/classes', classes)
+    .post('/api/classes', classForm)
     .then(res =>{
-        setClasses ({
+        setClassForm ({
         title:'',
         instructorId:'',
-        categoryId:'',
+        categoryId:''
         })
         setEvents([...events, res.data])
+        setClasses([...classes, res.data])
     })
     .catch(err => {
         console.log(err)
@@ -49,7 +63,7 @@ const handleSubmit = (e) =>{
 }
 
 
-//Need to somehow fix my delete and create and Update class
+
 const handleDelete = id =>{
     axiosWithAuth()
     .delete(`/api/classes/${id}`)
@@ -57,53 +71,48 @@ const handleDelete = id =>{
         console.log(res)
         setEvents(events.filter(item => item.id !== id))
         setClasses(classes.filter(item => item.id !== id))
+        setClassForm(classForm.filter(item => item.id !== id))
     })
 }
 //SET STATE TO RESPONSE
 
     return(
-        
         <div className='classes'>
             <h2>Class I've created</h2>
-                {classes.map(classes => 
-          <div key ={classes.id}> <button onClick ={() => handleDelete(classes.id)}>Delete</button>
+            <Boxes>
+                {classes.map(classForm=>
+          <div key ={classForm.id}>
               <br/>
-              <h4>Workout: <p>{classes.title}</p></h4>
-          <h4>Instructor Id: <p>{classes.instructorId}</p></h4>
-          <h4>Category Id: <p>{classes.categoryId}</p></h4>
-
-              <h5>Description: <p>{classes.description}</p></h5>
-              
+              <h4>Workout: <p>{classForm.title}</p></h4>
+          <h4>Instructor Id: <p>{classForm.instructorId}</p></h4>
+          <h4>Category Id: <p>{classForm.categoryId}</p></h4>
+          <button onClick ={() => handleDelete(classForm.id)}>Delete</button>
           </div>)}
+          </Boxes>
           <form onSubmit={handleSubmit}>
-                <h3> Add a Class</h3>
+                <h5> Add a Class</h5>
                 <input type='text'
                 name='title'
                 placeholder='Class'
-                value={classes.title}
+                value={classForm.title}
                 onChange={handleChange}
                 />
                 <br/>
                 <input type='text'
                 name='instructorId'
                 placeholder='Instructor'
-                value={classes.instructorId}
+                value={classForm.instructorId}
                 onChange={handleChange}
                 />
                 <br/>
                 <input type='text'
                 name='categoryId'
                 placeholder='Category'
-                value={classes.categoryId}
+                value={classForm.categoryId}
                 onChange={handleChange}
                 />
                 <br/>
-                <input type='text'
-                name='categoryId'
-                placeholder='Description'
-                value={classes.description}
-                onChange={handleChange}
-                />
+               
                 <br/>
                 
                 <button type='submit'>Add new class</button>
