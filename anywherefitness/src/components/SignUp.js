@@ -37,7 +37,7 @@ const SignUp = (props) => (
         axios.post("https://lambda-anywhere-fitness.herokuapp.com/api/auth/register", values)
         .then(res => {
           console.log(res);
-          props.history.push("/login");
+          props.history.push("/");
           if(  res.data.roleId === 1  ){
             alert("student account successfully registered")
           }

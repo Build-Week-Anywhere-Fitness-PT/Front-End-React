@@ -29,7 +29,7 @@ function App() {
         <Switch>
           <PrivateRoute exact path="/protected" component={InstructorDash} />
           <PrivateRoute exact path='/student' component={FitnessdashCli}/>
-            <Route exact path="/login" component={Login} />
+            <Route exact path="/" component={Login} />
             <Route path="/SignUp" component={SignUp}/>
         </Switch>
      {/* <Footer /> */}
