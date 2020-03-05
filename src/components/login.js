@@ -37,52 +37,23 @@ const Login = props => {
         [e.target.name]: e.target.value
       });
     };
-  
+
+     
+    
     const handleSubmit = e => {
       e.preventDefault();
       axiosWithAuth()
         .post("/api/auth/login", loginz)
         .then(
           res => {
-/// === 1 else ===2 instructor page 
-            
-            if (res.data.user.roleId === 2) {
-              
-  
-              //Set Token in Local Storage
-              localStorage.setItem("token", res.data.token);
-  
-              //Set Username in Local Storage
-              localStorage.setItem("username", res.data.user.username);
-  
-              //Set InstructorID in Local Storage
-              localStorage.setItem("studentID", res.data.user.id);
+
+            //Means this will be student id of 1
+            if (res.data.roleId !== 1) {
               props.history.push("/student");
-  
-            } else if (res.data.user.roleId === 1) {
-              
-              //Set Token in Local Storage
-              localStorage.setItem("token", res.data.token);
-  
-              //Set Username in Local Storage
-              localStorage.setItem("username", res.data.user.username);
-  
-              //Set InstructorID in Local Storage
-              localStorage.setItem("instructorID", res.data.user.id);
-  
-  
+
+              //will be instructor of id 2
+            } else if (res.data.roleId !== 2) {
               props.history.push("/protected");
-  
-  
-  
-              if (res.data.user.roleId === 2) {
-                console.log("Student");
-  
-                props.history.push("/student");
-              } else if (res.data.user.roleId === 1) {
-                props.history.push("/protected");
-              }
-  
               localStorage.setItem("token", res.data.token);
             }
           }
@@ -141,4 +112,3 @@ const Login = props => {
   };
   
   export default Login;
-  
