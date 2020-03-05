@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import styled from 'styled-components';
+
 import FitnessContext from './context/FitnessContext'
-import Login from './components/login';
+import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 import FitnessdashCli from './components/FitnessdashCli';
 import InstructorDash from './components/InstructorDash'
+import Navigation from './components/Header';
+import SignUp from './components/Signup';
 import './App.css';
 
 // #F5F5F5 white greenish color
@@ -19,8 +21,10 @@ function App() {
     <Router>
       <FitnessContext.Provider value={{events, setEvents}}>
     <div className="App">
+      <Navigation/>
      {/* <h1>Anywhere Fitness</h1> */}
      <Route exact path="/" component={Login} />
+     <Route path="/SignUp" component={SignUp}/>
      <PrivateRoute exact path="/protected" component={InstructorDash} />
      <PrivateRoute exact path='/student' component={FitnessdashCli}/>
           

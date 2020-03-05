@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Search from './Search';
 
  const FitCli = styled.div `
- background: gray;
+ background: #f5f5f5;
  `
  const Client = styled.div `
  display: flex;
@@ -13,11 +13,6 @@ flex-wrap: wrap;
 width: 20%;
 margin: auto;
 border: 3px solid black;
- `
- const Img = styled.div `
- margin-right:1340px;
- margin-bottom: -102px;
-
  `
 
 const FitnessDashCli = props =>{

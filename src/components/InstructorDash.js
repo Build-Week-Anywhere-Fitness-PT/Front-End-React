@@ -43,9 +43,9 @@ const [classes, setClasses] = useState([])
     return(
         <Back>
         <div>
-            <h1>Anywhere Fitness Instructor</h1>
-            <div className='user'> Welcome back {localStorage.getItem('instructorID')}</div>
-            <h2>My classes: </h2>
+            <h1>Instructor</h1>
+            <div className='user'> Welcome back {localStorage.getItem('username')}</div>
+            <h2>My categories: </h2>
             <C>
           
           

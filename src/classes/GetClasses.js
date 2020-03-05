@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react';
 import FitnessContext from '../context/FitnessContext'
 import axiosWithAuth from '../utils/axiosWithAuth';
+import UpdateClasses from './UpdateClasses';
 import styled from 'styled-components';
 
 const Boxes = styled.div `
@@ -25,6 +26,7 @@ const GetClasses = () => {
     instructorId:'',
     categoryId:''
 })
+
 const handleChange = e =>{
     setClassForm({...classForm, [e.target.name]: e.target.value})
     
@@ -44,27 +46,27 @@ useEffect(()=>{
 }, []);
 
 const handleSubmit = (e) =>{
-    e.preventDefault();
-    axiosWithAuth()
-    .post('/api/classes', classForm)
-    .then(res =>{
-        setClassForm ({
-        title:'',
-        instructorId:'',
-        categoryId:''
+        e.preventDefault();
+        axiosWithAuth()
+        .post('/api/classes', classForm)
+        .then(res =>{
+            setClassForm ({
+            title:'',
+            instructorId:'',
+            categoryId:''
+            })
+            setEvents([...events, res.data])
+            setClasses([...classes, res.data])
         })
-        setEvents([...events, res.data])
-        setClasses([...classes, res.data])
-    })
-    .catch(err => {
-        console.log(err)
-    })
+        .catch(err => {
+            console.log(err)
+        })
     
 }
+ 
 
 
-
-const handleDelete = id =>{
+    const handleDelete = id =>{
     axiosWithAuth()
     .delete(`/api/classes/${id}`)
     .then( res =>{
@@ -87,6 +89,7 @@ const handleDelete = id =>{
           <h4>Instructor Id: <p>{classForm.instructorId}</p></h4>
           <h4>Category Id: <p>{classForm.categoryId}</p></h4>
           <button onClick ={() => handleDelete(classForm.id)}>Delete</button>
+          <UpdateClasses id={classForm.id}/>
           </div>)}
           </Boxes>
           <form onSubmit={handleSubmit}>
