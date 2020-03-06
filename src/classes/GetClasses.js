@@ -63,7 +63,8 @@ const handleSubmit = (e) =>{
         })
     
 }
- 
+
+
 
 
     const handleDelete = id =>{
@@ -82,14 +83,14 @@ const handleSubmit = (e) =>{
         <div className='classes'>
             <h2>Class I've created</h2>
             <Boxes>
-                {classes.map(classForm=>
-          <div key ={classForm.id}>
+                {classes.map(cf=>
+          <div key ={cf.id}>
               <br/>
-              <h4>Workout: <p>{classForm.title}</p></h4>
-          <h4>Instructor Id: <p>{classForm.instructorId}</p></h4>
-          <h4>Category Id: <p>{classForm.categoryId}</p></h4>
-          <button onClick ={() => handleDelete(classForm.id)}>Delete</button>
-          <UpdateClasses id={classForm.id}/>
+              <h4>Workout: <p>{cf.title}</p></h4>
+          <h4>Instructor Id: <p>{cf.instructorId}</p></h4>
+          <h4>Category Id: <p>{cf.categoryId}</p></h4>
+          <button onClick ={() => handleDelete(cf.id)}>Delete</button>
+          <UpdateClasses id={cf.id} updateInfo={classForm}/>
           </div>)}
           </Boxes>
           <form onSubmit={handleSubmit}>
