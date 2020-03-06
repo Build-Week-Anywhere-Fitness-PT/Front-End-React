@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-const ProtectedRoute = ({ component: Component, ...props }) => {
+const PrivateRoute = ({ component: Component, ...props }) => {
     return (
         <Route
             {...props}
@@ -8,10 +8,10 @@ const ProtectedRoute = ({ component: Component, ...props }) => {
                 if (localStorage.getItem("token")) {
                     return <Component {...props} />
                 } else {
-                    return <Redirect to='/' />
+                    return <Redirect to="/login" />
                 }
             }}
         />
     )
 }
-export default ProtectedRoute;
+export default PrivateRoute;
