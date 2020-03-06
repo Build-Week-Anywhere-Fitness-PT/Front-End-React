@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import FitnessContext from './context/FitnessContext'
-import Login from './components/Login';
+import login from './components/login';
 import PrivateRoute from './components/PrivateRoute';
 import FitnessdashCli from './components/FitnessdashCli';
 import InstructorDash from './components/InstructorDash'
@@ -23,10 +23,10 @@ function App() {
     <div className="App">
       <Navigation/>
      {/* <h1>Anywhere Fitness</h1> */}
-     <Route exact path="/" component={Login} />
+     <Route exact path="/" component={login} />
 
      <Route path="/SignUp" component={SignUp}/>
-     
+
      <PrivateRoute exact path="/protected" component={InstructorDash} />
 
      <PrivateRoute exact path='/student' component={FitnessdashCli}/>
