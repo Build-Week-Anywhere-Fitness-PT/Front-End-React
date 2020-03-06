@@ -10,10 +10,11 @@ const UpdateClasses = props =>{
    
 
     const handleUpdate = id =>{
+        console.log(props.updateInfo)
         axiosWithAuth()
-        .put(`/api/classes/${id}`, update)
+        .put(`/api/classes/${id}`, props.updateInfo)
         .then(res =>{
-            setUpdate(...update, res.data)
+            console.log(res.data)
         })
         .catch(err => {
             console.log(err)
