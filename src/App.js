@@ -24,8 +24,11 @@ function App() {
       <Navigation/>
      {/* <h1>Anywhere Fitness</h1> */}
      <Route exact path="/" component={Login} />
+
      <Route path="/SignUp" component={SignUp}/>
+     
      <PrivateRoute exact path="/protected" component={InstructorDash} />
+
      <PrivateRoute exact path='/student' component={FitnessdashCli}/>
           
     </div>

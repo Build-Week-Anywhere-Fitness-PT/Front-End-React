@@ -11,8 +11,8 @@ flex-direction: column;
 flex-wrap: wrap;
 justify-content: inherit;
 border: 5px solid black;
-width: 60%;
-height: 60vh;
+width: 50%;
+
 margin: auto;
 padding: 5px;
 `

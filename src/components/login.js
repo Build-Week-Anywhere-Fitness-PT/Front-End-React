@@ -48,11 +48,11 @@ const Login = props => {
           res => {
 
             //Means this will be student id of 1
-            if (res.data.roleId !== 1) {
+            if (res.data.roleId === 1) {
               props.history.push("/student");
 
               //will be instructor of id 2
-            } else if (res.data.roleId !== 2) {
+            } else if (res.data.roleId === 2) {
               props.history.push("/protected");
               localStorage.setItem("token", res.data.token);
             }
