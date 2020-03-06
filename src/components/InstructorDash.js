@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect} from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import FitnessContext from '../context/FitnessContext'
 import GetClasses from '../classes/GetClasses'
@@ -11,8 +11,8 @@ font-size: 15px;
 flex-direction: column;
 flex-wrap: wrap;
 justify-content: inherit;
-width: 70%;
-height: 60vh;
+width: 50%;
+
 margin: auto;
 padding: 5px;
 border: 5px solid black;
@@ -44,7 +44,7 @@ const [classes, setClasses] = useState([])
         <Back>
         <div>
             <h1>Instructor</h1>
-            <div className='user'> Welcome back {localStorage.getItem('username')}</div>
+            <div className='user'> Welcome back {localStorage.getItem('instructorId')}</div>
             <h2>My categories: </h2>
             <C>
           

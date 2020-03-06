@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import FitnessContext from '../context/FitnessContext';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
 const UpdateClasses = props =>{
